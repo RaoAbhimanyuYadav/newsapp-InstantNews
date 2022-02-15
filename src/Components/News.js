@@ -30,7 +30,8 @@ export class News extends Component {
     }-- Instant News`;
   }
   async updateNews() {
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7e82a05404e5430eac9b21510d5cd693&pageSize=${this.props.pageSize}&page=${this.state.page}`;
+    this.props.setProgress(50);
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.api}&pageSize=${this.props.pageSize}&page=${this.state.page}`;
     this.setState({ loading: true });
     let data = await fetch(url); //fetch api and return a promise
     let parsedData = await data.json();
@@ -39,6 +40,7 @@ export class News extends Component {
       totalResults: parsedData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   }
   //async can wait for its body component to resolve promises
   async componentDidMount() {
@@ -48,7 +50,7 @@ export class News extends Component {
 
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=7e82a05404e5430eac9b21510d5cd693&pageSize=${this.props.pageSize}&page=${this.state.page}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.api}&pageSize=${this.props.pageSize}&page=${this.state.page}`;
     let data = await fetch(url); //fetch api and return a promise
     let parsedData = await data.json();
     this.setState({
