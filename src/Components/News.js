@@ -46,7 +46,7 @@ const News =(props)=> {
   };
     return (
       <>
-        <h1 className="container text-center">
+        <h1 className="container text-center" style={{marginTop: '64px'}}>
           Instant News -- Top{" "}
           {props.category.toUpperCase().slice(0, 1) +
             props.category.slice(1)}{" "}
