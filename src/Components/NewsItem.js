@@ -1,21 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import logo from "./icon.jpg";
 
-export class NewsItem extends Component {
-  render() {
-    let { title, discription, imgUrl, newsUrl, author, date, source } =
-      this.props;
+const NewsItem=(props)=> {
+    let { title, discription, imgUrl, newsUrl, author, date, source } = props;
     return (
       <div className="card my-3">
         <div style={{display: "flex", justifyContent: 'flex-end',right:'0',position:'absolute'}}>
-          <span
-            className=" badge rounded-pill bg-danger"
-            style={{ left: "90%", zIndex: "1" }}
-          >
+          <span className=" badge rounded-pill bg-danger">
             {source}
           </span>
         </div>
-
         <img src={imgUrl ? imgUrl : logo} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{title}...</h5>
@@ -32,7 +26,5 @@ export class NewsItem extends Component {
         </div>
       </div>
     );
-  }
 }
-
 export default NewsItem;

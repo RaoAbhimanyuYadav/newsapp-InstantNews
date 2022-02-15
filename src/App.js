@@ -28,7 +28,7 @@ export default class App extends Component {
          <LoadingBar
         color='#f11946'
         progress={this.state.progress} 
-        // onLoaderFinished={() => this.setProgress(0)}
+        onLoaderFinished={() => this.setProgress(0)}
       />
           <Routes>
           <Route path='/business' element={<News setProgress={this.setProgress} api={this.api} key="business" pageSize={12} country='in' category = 'business'/>}></Route>
